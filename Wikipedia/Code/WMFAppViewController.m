@@ -1185,9 +1185,10 @@ NSString *const WMFLanguageVariantAlertsLibraryVersion = @"WMFLanguageVariantAle
             }
 
             DDLogDebug(@"Location: %@", activity.userInfo[@"WMFLocation"]);
-            NSString *locationString = activity.userInfo[@"WMFLocation"];
-            if (locationString) {
-                [[self placesViewController] zoomAndPanMapViewToLocation:[[CLLocation alloc] initWithString:locationString]];
+            NSString *locString = activity.userInfo[@"WMFLocation"];
+            CLLocation *loc = [[CLLocation alloc] initWithString:locString];
+            if (loc) {
+                [[self placesViewController] zoomAndPanMapViewToLocation:loc];
             }
 
         } break;

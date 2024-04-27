@@ -336,7 +336,7 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
 
 @implementation CLLocation (WMFExtensions)
 
-- (instancetype)initWithString:(NSString *)locString {
+- (nullable instancetype)initWithString:(NSString *)locString {
     NSArray<NSString *> *components = [locString componentsSeparatedByString:@","];
     if (components.count != 2) {
         return nil;

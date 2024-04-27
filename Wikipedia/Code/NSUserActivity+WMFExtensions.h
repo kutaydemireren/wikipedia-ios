@@ -59,7 +59,7 @@ extern NSString *const WMFNavigateToActivityNotification;
 @import CoreLocation;
 
 @interface CLLocation (WMFExtensions)
-- (instancetype)initWithString:(NSString *)locString;
+- (nullable instancetype)initWithString:(NSString *)locString;
 @end
 
 NS_ASSUME_NONNULL_END
