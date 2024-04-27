@@ -1177,12 +1177,19 @@ NSString *const WMFLanguageVariantAlertsLibraryVersion = @"WMFLanguageVariantAle
             [self setSelectedIndex:WMFAppTabTypePlaces];
             [self.navigationController popToRootViewControllerAnimated:animated];
             NSURL *articleURL = activity.wmf_linkURL;
+
             if (articleURL) {
                 // For "View on a map" action to succeed, view mode has to be set to map.
                 [[self placesViewController] updateViewModeToMap];
                 [[self placesViewController] showArticleURL:articleURL];
             }
+
             DDLogDebug(@"Location: %@", activity.userInfo[@"WMFLocation"]);
+            NSString *locationString = activity.userInfo[@"WMFLocation"];
+            if (locationString) {
+                [[self placesViewController] zoomAndPanMapViewToLocation:[[CLLocation alloc] initWithString:locationString]];
+            }
+
         } break;
         case WMFUserActivityTypeContent: {
             [self dismissPresentedViewControllers];
