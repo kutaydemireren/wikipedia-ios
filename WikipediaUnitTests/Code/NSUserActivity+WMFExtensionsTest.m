@@ -98,6 +98,11 @@
     XCTAssertNil(loc, @"Location must be nil for an invalid string.");
 }
 
+- (void)testInitWithMissingStringReturnsNil {
+    CLLocation *loc = [[CLLocation alloc] initWithString:@"52.35,"];
+    XCTAssertNil(loc, @"Location must be nil for a missing string.");
+}
+
 - (void)testInitWithValidString {
     CLLocation *loc = [[CLLocation alloc] initWithString:@"52.35,4.88"];
     XCTAssertEqual(loc.coordinate.latitude, 52.35, @"Latitude must be set as expected for a valid string.");

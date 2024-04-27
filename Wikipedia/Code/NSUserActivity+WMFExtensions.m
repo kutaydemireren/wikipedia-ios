@@ -342,7 +342,13 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
         return nil;
     }
 
-    return [self initWithLatitude:[components[0] doubleValue] longitude:[components[1] doubleValue]];
+    NSString *lat = components[0];
+    NSString *lgt = components[1];
+    if (lat.length == 0 || lgt.length == 0) {
+        return nil;
+    }
+
+    return [self initWithLatitude:[lat doubleValue] longitude:[lgt doubleValue]];
 }
 
 @end
