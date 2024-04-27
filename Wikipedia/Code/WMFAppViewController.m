@@ -1172,19 +1172,17 @@ NSString *const WMFLanguageVariantAlertsLibraryVersion = @"WMFLanguageVariantAle
             [self.navigationController popToRootViewControllerAnimated:animated];
             break;
         case WMFUserActivityTypePlaces: {
-            // TODO: places deeplink handling
             [self dismissPresentedViewControllers];
             [self setSelectedIndex:WMFAppTabTypePlaces];
             [self.navigationController popToRootViewControllerAnimated:animated];
-            NSURL *articleURL = activity.wmf_linkURL;
 
+            NSURL *articleURL = activity.wmf_linkURL;
             if (articleURL) {
                 // For "View on a map" action to succeed, view mode has to be set to map.
                 [[self placesViewController] updateViewModeToMap];
                 [[self placesViewController] showArticleURL:articleURL];
             }
 
-            DDLogDebug(@"Location: %@", activity.userInfo[@"WMFLocation"]);
             NSString *locString = activity.userInfo[@"WMFLocation"];
             CLLocation *loc = [[CLLocation alloc] initWithString:locString];
             if (loc) {

@@ -54,12 +54,4 @@ extern NSString *const WMFNavigateToActivityNotification;
 
 @end
 
-// TODO: Move
-
-@import CoreLocation;
-
-@interface CLLocation (WMFExtensions)
-- (nullable instancetype)initWithString:(NSString *)locString;
-@end
-
 NS_ASSUME_NONNULL_END
