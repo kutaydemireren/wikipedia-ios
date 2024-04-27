@@ -342,7 +342,7 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
         return nil;
     }
 
-    return nil;
+    return [self initWithLatitude:[components[0] doubleValue] longitude:[components[1] doubleValue]];
 }
 
 @end
