@@ -32,6 +32,13 @@
     XCTAssertEqual(activity.wmf_type, WMFUserActivityTypeExplore);
 }
 
+- (void)testPlacesURL {
+    NSURL *url = [NSURL URLWithString:@"wikipedia://places"];
+    NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url];
+    XCTAssertEqual(activity.wmf_type, WMFUserActivityTypePlaces);
+    XCTAssertNil(activity.webpageURL.absoluteString);
+}
+
 - (void)testHistoryURL {
     NSURL *url = [NSURL URLWithString:@"wikipedia://history"];
     NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url];

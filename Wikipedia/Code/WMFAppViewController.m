@@ -1172,6 +1172,7 @@ NSString *const WMFLanguageVariantAlertsLibraryVersion = @"WMFLanguageVariantAle
             [self.navigationController popToRootViewControllerAnimated:animated];
             break;
         case WMFUserActivityTypePlaces: {
+            // TODO: places deeplink handling
             [self dismissPresentedViewControllers];
             [self setSelectedIndex:WMFAppTabTypePlaces];
             [self.navigationController popToRootViewControllerAnimated:animated];
