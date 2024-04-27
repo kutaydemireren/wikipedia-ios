@@ -46,6 +46,13 @@
     XCTAssertEqualObjects(activity.webpageURL.absoluteString, @"https://en.wikipedia.org");
 }
 
+- (void)testPlacesURLWithLocation {
+    NSURL *url = [NSURL URLWithString:@"wikipedia://places?loc=52.35,4.88"];
+    NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url];
+    XCTAssertEqual(activity.wmf_type, WMFUserActivityTypePlaces);
+    XCTAssertEqualObjects(activity.userInfo[@"WMFLocation"], @"52.35,4.88");
+}
+
 - (void)testHistoryURL {
     NSURL *url = [NSURL URLWithString:@"wikipedia://history"];
     NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url];
