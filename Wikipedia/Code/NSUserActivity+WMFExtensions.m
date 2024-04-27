@@ -331,3 +331,18 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
 }
 
 @end
+
+// TODO: Move
+
+@implementation CLLocation (WMFExtensions)
+
+- (instancetype)initWithString:(NSString *)locString {
+    NSArray<NSString *> *components = [locString componentsSeparatedByString:@","];
+    if (components.count != 2) {
+        return nil;
+    }
+
+    return nil;
+}
+
+@end

@@ -82,3 +82,14 @@
 
 @end
 
+// TODO: Move
+@interface CLLocation_WMFExtensions_Tests : XCTestCase
+@end
+
+@implementation CLLocation_WMFExtensions_Tests
+
+- (void)testInitWithEmptyString {
+    CLLocation *loc = [[CLLocation alloc] initWithString:@""];
+    XCTAssertNil(loc, @"Location must be nil for an empty string.");
+}
+@end
