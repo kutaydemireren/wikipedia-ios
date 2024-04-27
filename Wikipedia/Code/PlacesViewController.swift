@@ -2145,6 +2145,11 @@ class PlacesViewController: ViewController, UISearchBarDelegate, ArticlePopoverV
             return
         }
         zoomAndPanMapView(toLocation: userLocation)
+
+        // TODO: ex. show custom loc
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+            self.zoomAndPanMapView(toLocation: CLLocation(latitude: 19.08, longitude: 72.81))
+        }
     }
     
     // MARK: - NSFetchedResultsControllerDelegate
