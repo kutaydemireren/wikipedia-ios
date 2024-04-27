@@ -1182,6 +1182,7 @@ NSString *const WMFLanguageVariantAlertsLibraryVersion = @"WMFLanguageVariantAle
                 [[self placesViewController] updateViewModeToMap];
                 [[self placesViewController] showArticleURL:articleURL];
             }
+            DDLogDebug(@"Location: %@", activity.userInfo[@"WMFLocation"]);
         } break;
         case WMFUserActivityTypeContent: {
             [self dismissPresentedViewControllers];
