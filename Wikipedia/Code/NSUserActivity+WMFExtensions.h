@@ -53,4 +53,5 @@ extern NSString *const WMFNavigateToActivityNotification;
 + (NSURL *)wmf_URLForActivityOfType:(WMFUserActivityType)type withArticleURL:(NSURL *)articleURL;
 
 @end
+
 NS_ASSUME_NONNULL_END

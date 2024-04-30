@@ -2126,8 +2126,8 @@ class PlacesViewController: ViewController, UISearchBarDelegate, ArticlePopoverV
         view.isHeadingArrowVisible = heading.headingAccuracy > 0 && heading.headingAccuracy < 90
         view.heading = heading.trueHeading
     }
-    
-    func zoomAndPanMapView(toLocation location: CLLocation) {
+
+    @objc public func zoomAndPanMapView(toLocation location: CLLocation) {
         let region = [location.coordinate].wmf_boundingRegion(with: 10000)
         mapRegion = region
         if let searchRegion = currentSearchRegion, isDistanceSignificant(betweenRegion: searchRegion, andRegion: region) {

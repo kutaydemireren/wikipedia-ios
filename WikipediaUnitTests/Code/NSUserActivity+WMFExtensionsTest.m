@@ -32,6 +32,34 @@
     XCTAssertEqual(activity.wmf_type, WMFUserActivityTypeExplore);
 }
 
+- (void)testPlacesURL {
+    NSURL *url = [NSURL URLWithString:@"wikipedia://places"];
+    NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url];
+    XCTAssertEqual(activity.wmf_type, WMFUserActivityTypePlaces);
+    XCTAssertNil(activity.webpageURL.absoluteString);
+}
+
+- (void)testPlacesURLWithArticleURL {
+    NSURL *url = [NSURL URLWithString:@"wikipedia://places?WMFArticleURL=https://en.wikipedia.org"];
+    NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url];
+    XCTAssertEqual(activity.wmf_type, WMFUserActivityTypePlaces);
+    XCTAssertEqualObjects(activity.webpageURL.absoluteString, @"https://en.wikipedia.org");
+}
+
+- (void)testPlacesURLWithLocation {
+    NSURL *url = [NSURL URLWithString:@"wikipedia://places?loc=52.35,4.88"];
+    NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url];
+    XCTAssertEqual(activity.wmf_type, WMFUserActivityTypePlaces);
+    XCTAssertEqualObjects(activity.userInfo[@"WMFLocation"], @"52.35,4.88");
+}
+
+- (void)testPlacesURLWithLocationEmpty {
+    NSURL *url = [NSURL URLWithString:@"wikipedia://places?loc="];
+    NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url];
+    XCTAssertEqual(activity.wmf_type, WMFUserActivityTypePlaces);
+    XCTAssertEqualObjects(activity.userInfo[@"WMFLocation"], NULL);
+}
+
 - (void)testHistoryURL {
     NSURL *url = [NSURL URLWithString:@"wikipedia://history"];
     NSUserActivity *activity = [NSUserActivity wmf_activityForWikipediaScheme:url];
@@ -53,4 +81,3 @@
 }
 
 @end
-
